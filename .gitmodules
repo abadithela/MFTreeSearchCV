@@ -1,0 +1,6 @@
+[submodule "TreeSearch/multipolyfit"]
+	path = TreeSearch/multipolyfit
+	url = https://github.com/abadithela/bbopt.git
+[submodule "multipolyfit"]
+	path = multipolyfit
+	url = https://github.com/abadithela/bbopt.git
