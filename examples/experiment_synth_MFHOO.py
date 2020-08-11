@@ -1,14 +1,14 @@
 import numpy as np
-import Queue
+import queue
 from mf.mf_func import MFOptFunction
 from utils.general_utils import map_to_cube
 import sys
-from examples.synthetic_functions import *
+from synthetic_functions import *
 from mf.mf_func import get_noisy_mfof_from_mfof
-from letters.letters_classifier import *
+# from letters.letters_classifier import *
 import time
 
-from MFTree.MFHOO import *
+from MFTreeSearchCV.MFHOO import *
 
 import synthetic_functions
 
@@ -34,7 +34,7 @@ def run_one_experiment(mfobject,nu,rho,times,sigma,C,t0,filname):
 
 		R = R + [E]
 		T = T + [MP.cost]
-		print str(MP.cost) + ' : ' + str(E)
+		print(str(MP.cost) + ' : ' + str(E))
 		#print 'Total HOO Queries: ' + str(MP.t) 
 
 	np.save(filename,R)
@@ -79,13 +79,13 @@ if __name__ == '__main__':
 	t0 = mfobject.opt_fidel_cost
 
 	NT = str(time.time())
-	print 'Running Experiment 1: '
+	print ('Running Experiment 1: ')
 	filename = 'MFHOO' + EXP_NAME + '_' + NT + '_' + '1.npy'
 	R,T = run_one_experiment(mfobject,nu,rho,times,sigma,C,t0,filename)
 	result = R
 
 	for i in range(1,NUM_EXP):
-		print 'Running Experiment' + str(i+1) + ': '
+		print ('Running Experiment' + str(i+1) + ': ')
 		filename = 'MFHOO' + EXP_NAME + '_' + NT + '_' + str(i+1) + '.npy'
 		R,T = run_one_experiment(mfobject,nu,rho,times,sigma,C,t0,filename)
 		result = np.vstack([result,R])
